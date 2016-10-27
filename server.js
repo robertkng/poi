@@ -4,6 +4,7 @@ const logger = require('morgan');
 const homeRoute = require('./routes/home');
 // const path = require('path');
 // const favorites = require('./models/favorites');
+// bodyParser, allows us to make post request and get values from the forms
 // const bodyParser = require('body-parser');
 // const methodOverride = require('method-override');
 // const { getCity } = require('./services/poilocator');
