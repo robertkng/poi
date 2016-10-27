@@ -8,5 +8,12 @@
 </head>
 <body>
   <a href="/">Search Again</a>
+    <% displayResults.forEach(function(info){ %>
+    <p><%= info.title %> </p>
+    <p><%= info.main_image %> </p>
+    <p><%= info.details.short_description %> </p>
+    <p><%= info.location.google_maps_link %> </p>
+
+   <% }) %>
 </body>
 </html>

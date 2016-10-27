@@ -5,10 +5,10 @@ const API_KEY = process.env.AMADEUS_KEY;
 function getCity(req,res,next) {
   fetch(`${API_URL}apikey=${API_KEY}&city_name=${req.query.city || 'New York'}`)
 //parses the json string on the server
-  .then(r => r.json())
-  .then((result) => {
-    res.city = result.results;
-// console.log(req.body);
+  .then(results => results.json())
+  .then((results) => {
+    console.log(res.city);
+    res.city = results.points_of_interest;
     next();
   })
   .catch((err) => {
@@ -18,3 +18,4 @@ function getCity(req,res,next) {
 }
 
 module.exports = { getCity };
+

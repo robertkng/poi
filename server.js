@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const logger = require('morgan');
 const homeRoute = require('./routes/home');
+const cityRoute = require('./routes/home');
 // const path = require('path');
 // const favorites = require('./models/favorites');
 // bodyParser, allows us to make post request and get values from the forms
@@ -17,6 +18,7 @@ app.use(logger('dev'));
 
 //setting the homepage to a specific file
 app.use('/', homeRoute);
+app.use('/city', cityRoute)
 // set static assets path
 // app.use(express.static(path.join(__dirname, 'public')));
 

@@ -2,22 +2,19 @@ const router = require('express').Router();
 const { getCity } = require('../services/poilocator');
 
 router.get('/', (req,res) => {
-  res.render('index');
-});
-
-router.get('/city', getCity, (req, res) => {
-  console.log(res.data);
-  res.render('city', {
-    data: res.data || [],
+  res.render('index', {
+  displayResults: [],
   });
 });
 
-// router.get('/getcity', getCity, (req, res) => {
-//   console.log(res.data);
-//   // res.render('index', {
-//   res.json(''
-//     data: res.data || []),
-// });
-
+router.get('/city', getCity, (req, res) => {
+  console.log(res.city);
+  res.render('city', {
+    displayResults: res.city || [],
+    city: res.city,
+  });
+});
 
 module.exports = router;
+
+// <p><a href="<%= info.location.google_maps_link %>"> </p>
