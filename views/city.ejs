@@ -4,16 +4,23 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Points of Interest Locator</title>
-  <link rel="stylesheet" href="">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <a href="/">Search Again</a>
+    <p>Results:</p>
     <% displayResults.forEach(function(info){ %>
-    <p><%= info.title %> </p>
-    <p><%= info.main_image %> </p>
-    <p><%= info.details.short_description %> </p>
-    <p><%= info.location.google_maps_link %> </p>
-
+    <p>Place: <%= info.title %> </p>
+    <img src="<%= info.contextual_images[0].medium.url %><" alt="">
+    <p>Description: <%= info.details.short_description %> </p>
+    <p>Location: <%= info.location.google_maps_link %> </p>
+      <form class="save-favorites" action="/favorites" method="post">
+        <input type="hidden" name="favorites[Title]" value="<%= info.title %>">
+        <input type="hidden" name="favorites[Image]" value="<%= info.contextual_images[0].medium.url %>">
+        <input type="hidden" name="favorites[Description]" value="<%= info.details.short_description %>">
+        <input type="hidden" name="favorites[Location]" value="<%= info.location.google_maps_link %>">
+        <input type="submit" value="Save">
+      </form>
    <% }) %>
 </body>
 </html>

@@ -1,5 +1,6 @@
-const router = require('express').Router();
-const { getCity } = require('../services/poilocator');
+const router        = require('express').Router();
+const { getCity }   = require('../services/poilocator');
+const dbService     = require('../models/favorites');
 
 router.get('/', (req,res) => {
   res.render('index', {
@@ -12,8 +13,15 @@ router.get('/city', getCity, (req, res) => {
   res.render('city', {
     displayResults: res.city || [],
     city: res.city,
+    // cityEjs: displayCity,
   });
 });
+
+//middleware exists between favorites and req,res
+router.post('/city', dbService.saveFavorites, (req, res) => {
+  res.redirect('/');
+});
+
 
 module.exports = router;
 

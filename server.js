@@ -1,17 +1,18 @@
 require('dotenv').config();
-const express = require('express');
-const logger = require('morgan');
-const homeRoute = require('./routes/home');
-const cityRoute = require('./routes/home');
+const express       = require('express');
+const logger        = require('morgan');
+const homeRoute     = require('./routes/home');
+const cityRoute     = require('./routes/home');
 // const path = require('path');
 // const favorites = require('./models/favorites');
 // bodyParser, allows us to make post request and get values from the forms
-// const bodyParser = require('body-parser');
+// const bodyParser  = require('body-parser');
 // const methodOverride = require('method-override');
 // const { getCity } = require('./services/poilocator');
 
-const app = express();
-const port = process.env.PORT || 3000;
+
+const app           = express();
+const port          = process.env.PORT || 3000;
 
 // set up logging so that we can see what's happening
 app.use(logger('dev'));

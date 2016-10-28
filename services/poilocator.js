@@ -7,8 +7,9 @@ function getCity(req,res,next) {
 //parses the json string on the server
   .then(results => results.json())
   .then((results) => {
-    console.log(res.city);
+    // console.log(res.city);
     res.city = results.points_of_interest;
+    // displayCity = $req.query.city;
     next();
   })
   .catch((err) => {
