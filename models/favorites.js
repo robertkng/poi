@@ -36,7 +36,7 @@ function saveFavorites(req,res,next) {
 function showFavorites(req,res,next) {
   MongoClient.connect(dbConnection, (err,db) => {
     if (err) return next (err);
-    console.log('getting favorites');
+    // console.log('getting favorites');
     db.collection('favorites')
     .find()
     .toArray((arrayError, data) => {

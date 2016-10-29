@@ -36,9 +36,7 @@
         <li class="poi">
         <%# Saved items are displayed below %>
         <% showTheFavorites.forEach(function(info) { %>
-        <%= info.contextual_images[0].medium.url %>
-        <%= info.details.short_description %>
-        <%= info.location.google_maps_link %>
+ <%= info.contextual_images[0.medium.url] %>
         <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
           <input type="submit" value="Delete">
         </form>

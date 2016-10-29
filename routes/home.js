@@ -9,6 +9,7 @@ router.use(methodOverride('_method'));
 router.get('/', (req,res) => {
   res.render('index', {
   showTheCity: [],
+  // showTheFavorites: res.saved || [],
   });
 });
 
@@ -16,7 +17,7 @@ router.get('/city', showFavorites, getCity, (req, res) => {
   // console.log(res.city);
   res.render('city', {
     showTheCity: res.city || [],
-    showTheFavorites: res.favorites || [],
+    showTheFavorites: res.saved || [],
     // city: res.city,
     // cityEjs: displayCity,
   });
