@@ -13,11 +13,12 @@
         <ul class="results">
           <li class="poi">
             <p>Results:</p>
-            <% displayResults.forEach(function(info){ %>
+            <% showTheCity.forEach(function(info){ %>
             <p>Place: <%= info.title %> </p>
             <img class="image" src="<%= info.contextual_images[0].medium.url %><" alt="">
             <p>Description: <%= info.details.short_description %> </p>
             <p>Location: <%= info.location.google_maps_link %> </p>
+
             <form class="save-favorites" action="/city" method="post">
               <input type="hidden" name="favorites[title]" value="<%= info.title %>">
               <input type="hidden" name="favorites[contextual_images[0].medium.url]" value="<%= info.contextual_images[0].medium.url %>">
@@ -30,18 +31,19 @@
       </ul>
     </div>
     <div class="container">
-      <h3><%# favorites.length %> Favorites</h3>
+      <h3><%# showTheFavorites.length %> Favorites</h3>
       <ul class="favorites">
-        <%# Saved items are displayed below%>
-        <% for (let i = 0; i < favorites.length; i++) { %>
         <li class="poi">
-          <img class="image" src="<%= favorites[contextual_images[0].medium.url] %>" alt="" />
-          <h4><%= favorites[i].title %></h4>
-          <form class="delete-favorites" action="/city/<%= favorites[i]._id %>?_method=DELETE" method="post">
-            <input type="submit" value="Delete">
-          </form>
+        <%# Saved items are displayed below %>
+        <% showTheFavorites.forEach(function(info) { %>
+        <%= info.contextual_images[0].medium.url %>
+        <%= info.details.short_description %>
+        <%= info.location.google_maps_link %>
+        <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
+          <input type="submit" value="Delete">
+        </form>
         </li>
-        <% }; %>
+        <% }); %>
       </ul>
     </div>
   </div>

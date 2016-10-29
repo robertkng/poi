@@ -31,6 +31,7 @@ app.set('views', 'views');
 // middleware for method override
 app.use(methodOverride('_method'));
 
+app.listen(port, () => console.log('server is listen on port ', port));
 // setting the homepage to a specific file
 // routes need to be towards the end otherwise it would be referenced
 // prior to other references, which can cause error
@@ -39,4 +40,3 @@ app.use('/city', cityRoute)
 
 
 
-app.listen(port, () => console.log('server is listen on port ', port));
