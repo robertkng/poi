@@ -19,4 +19,3 @@ function getCity(req,res,next) {
 
 module.exports = { getCity };
 
-// || 'New York'
