@@ -36,7 +36,10 @@
         <li class="poi">
         <%# Saved items are displayed below %>
         <% showTheFavorites.forEach(function(info) { %>
- <%= info.contextual_images[0.medium.url] %>
+             <p><%= info.title %> </p>
+             <p><%= info.details %></p>
+             <p><%= info.location %></p>
+
         <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
           <input type="submit" value="Delete">
         </form>
