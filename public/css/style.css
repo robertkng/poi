@@ -1,0 +1,47 @@
+body {
+  font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+h1 {
+
+}
+
+h2 {
+
+}
+
+header {
+  text-align: center;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.container {
+  width: 50%;
+}
+
+.favorites {
+  height: 400px;
+  background-color: rgb(222, 237, 255);
+}
+
+.results, .favorites {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.results {
+  height: 400px;
+}
+
+.poi {
+  width: 170px;
+  height: 300px;
+  text-align: center;
+}

@@ -4,23 +4,46 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Points of Interest Locator</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <a href="/">Search Again</a>
-    <p>Results:</p>
-    <% displayResults.forEach(function(info){ %>
-    <p>Place: <%= info.title %> </p>
-    <img src="<%= info.contextual_images[0].medium.url %><" alt="">
-    <p>Description: <%= info.details.short_description %> </p>
-    <p>Location: <%= info.location.google_maps_link %> </p>
-      <form class="save-favorites" action="/favorites" method="post">
-        <input type="hidden" name="favorites[Title]" value="<%= info.title %>">
-        <input type="hidden" name="favorites[Image]" value="<%= info.contextual_images[0].medium.url %>">
-        <input type="hidden" name="favorites[Description]" value="<%= info.details.short_description %>">
-        <input type="hidden" name="favorites[Location]" value="<%= info.location.google_maps_link %>">
-        <input type="submit" value="Save">
-      </form>
-   <% }) %>
+  <div class="wrapper">
+    <div class="container">
+      <a href="/">Search Again</a>
+        <ul class="results">
+          <li class="poi">
+            <p>Results:</p>
+            <% displayResults.forEach(function(info){ %>
+            <p>Place: <%= info.title %> </p>
+            <img class="image" src="<%= info.contextual_images[0].medium.url %><" alt="">
+            <p>Description: <%= info.details.short_description %> </p>
+            <p>Location: <%= info.location.google_maps_link %> </p>
+            <form class="save-favorites" action="/city" method="post">
+              <input type="hidden" name="favorites[title]" value="<%= info.title %>">
+              <input type="hidden" name="favorites[contextual_images[0].medium.url]" value="<%= info.contextual_images[0].medium.url %>">
+              <input type="hidden" name="favorites[details].short_description" value="<%= info.details.short_description %>">
+              <input type="hidden" name="favorites[location].google_maps_link" value="<%= info.location.google_maps_link %>">
+              <input type="submit" value="Save">
+            </form>
+          </li>
+        <% }) %>
+      </ul>
+    </div>
+    <div class="container">
+      <h3><%# favorites.length %> Favorites</h3>
+      <ul class="favorites">
+        <%# Saved items are displayed below%>
+        <% for (let i = 0; i < favorites.length; i++) { %>
+        <li class="poi">
+          <img class="image" src="<%= favorites[contextual_images[0].medium.url] %>" alt="" />
+          <h4><%= favorites[i].title %></h4>
+          <form class="delete-favorites" action="/city/<%= favorites[i]._id %>?_method=DELETE" method="post">
+            <input type="submit" value="Delete">
+          </form>
+        </li>
+        <% }; %>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>

@@ -1,6 +1,10 @@
 const router        = require('express').Router();
 const { getCity }   = require('../services/poilocator');
-const dbService     = require('../models/favorites');
+// const dbService     = require('../models/favorites');
+const { saveFavorites, getFavorites, deleteFavorites }   = require('../models/favorites');
+const methodOverride = require('method-override');
+
+router.use(methodOverride('_method'));
 
 router.get('/', (req,res) => {
   res.render('index', {
@@ -8,19 +12,21 @@ router.get('/', (req,res) => {
   });
 });
 
-router.get('/city', getCity, (req, res) => {
-  console.log(res.city);
+router.get('/city', getCity, getFavorites, (req, res) => {
+  // console.log(res.city);
   res.render('city', {
     displayResults: res.city || [],
-    city: res.city,
+    favorites: res.favorites || [],
+    // city: res.city,
     // cityEjs: displayCity,
   });
 });
 
 //middleware exists between favorites and req,res
-router.post('/city', dbService.saveFavorites, (req, res) => {
-  res.redirect('/');
+router.post('/city', saveFavorites, (req, res) => {
+  res.redirect('/city');
 });
+
 
 
 module.exports = router;

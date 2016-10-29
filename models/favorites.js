@@ -4,7 +4,7 @@ const dbConnection = process.env['MONGODB_URI'] || 'mongodb://localhost:27017/po
 function getCity(req,res,next) {
   MongoClient.connect(dbConnection, (err, db) => {
     if (err) return next (err);
-    db.collection('poi')
+    db.collection('favorites')
     .find()
     .toArray((arrayError, data) => {
       if (arrayError) return next (arrayError);
@@ -20,11 +20,30 @@ function getCity(req,res,next) {
 function saveFavorites(req,res,next) {
   MongoClient.connect(dbConnection, (err,db) => {
     if (err) return next (err);
+    console.log('req.body is: ', req.body);
     db.collection('favorites')
-    .insert(req.body.favorites, (insertError, result) => {
+    .insert(req.body.favorites, (insertErr, result) => {
       if (insertErr) return next (insertErr);
 
-      res.saved = result;
+      // res.saved = result;
+      db.close();
+      return next();
+    });
+    return false;
+  });
+  return false;
+}
+
+function getFavorites(req,res,next) {
+  MongoClient.connect(dbConnection, (err,db) => {
+    if (err) return next (err);
+
+    db.collection('favorites')
+    .find()
+    .toArray((arrayError, data) => {
+      if (arrayError) return next(arrayError);
+
+      res.saved = data;
       db.close();
       return next();
     });
@@ -35,11 +54,10 @@ function saveFavorites(req,res,next) {
 
 
 
-
 module.exports = {
   getCity,
   saveFavorites,
-  // getFavorites,
+  getFavorites,
   // deleteFavorites,
 };
 
