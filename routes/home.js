@@ -18,8 +18,6 @@ router.get('/city', showFavorites, getCity, (req, res) => {
   res.render('city', {
     showTheCity: res.city || [],
     showTheFavorites: res.saved || [],
-    // city: res.city,
-    // cityEjs: displayCity,
   });
 });
 
@@ -28,6 +26,9 @@ router.post('/city', saveFavorites, (req, res) => {
   res.redirect('/city');
 });
 
+router.delete('/city/:id', deleteFavorites, (req, res) => {
+  res.redirect('/city');
+})
 
 
 module.exports = router;

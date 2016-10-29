@@ -33,8 +33,8 @@ app.use(methodOverride('_method'));
 
 app.listen(port, () => console.log('server is listen on port ', port));
 // setting the homepage to a specific file
-// routes need to be towards the end otherwise it would be referenced
-// prior to other references, which can cause error
+// routes need to be towards the end of the page as they should not be referenced prior to
+// to other functions being called upon as this can cause unnecessary errors
 app.use('/', homeRoute);
 app.use('/city', cityRoute)
 

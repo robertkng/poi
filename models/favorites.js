@@ -56,7 +56,8 @@ function deleteFavorites(req,res,next) {
     if (err) return next (err);
 
     db.collection('favorites')
-    .findAndRemove( {_id: ObjectID(req.params.id) }, (removeErr, doc) => {
+    .findAndRemove({_id: ObjectID(req.params.id)}, (removeErr, doc) => {
+      if (removeErr) return next(removeErr);
 
       //return the data
       res.removed = doc;

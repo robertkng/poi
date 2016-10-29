@@ -10,9 +10,9 @@
   <div class="wrapper">
     <div class="container">
       <a href="/">Search Again</a>
+        <p>Results:</p>
         <ul class="results">
           <li class="poi">
-            <p>Results:</p>
             <% showTheCity.forEach(function(info){ %>
             <p>Place: <%= info.title %> </p>
             <img class="image" src="<%= info.contextual_images[0].medium.url %><" alt="">
@@ -36,13 +36,12 @@
         <li class="poi">
         <%# Saved items are displayed below %>
         <% showTheFavorites.forEach(function(info) { %>
-             <p><%= info.title %> </p>
-             <p><%= info.details %></p>
-             <p><%= info.location %></p>
-
-        <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
-          <input type="submit" value="Delete">
-        </form>
+        <p><%= info.title %> </p>
+        <p><%= info.details %></p>
+        <p><%= info.location %></p>
+          <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
+            <input type="submit" value="Delete">
+          </form>
         </li>
         <% }); %>
       </ul>
