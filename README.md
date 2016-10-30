@@ -6,7 +6,9 @@ A web application that allows one to look up points of interest within the searc
 
 
 User Story
-Any guests can search and view images / details of points of interest in that city. But, any signed in users can save down the images and details.
+Any guests can search any large city and view the images and details of each points of 
+interest in that city. But, only signed in users can save down the images and details
+onto their logged in account.
 
 
 Technology that will be used in the web application:
