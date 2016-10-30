@@ -1,4 +1,5 @@
 const router                 = require('express').Router();
+const { authenticate }       = require('../lib/auth');
 const { getCity }            = require('../services/poilocator');
 const { saveFavorites,
         showFavorites,
@@ -7,14 +8,16 @@ const methodOverride         = require('method-override');
 
 router.use(methodOverride('_method'));
 
-router.get('/', (req,res) => {
+router.get('/', authenticate, (req,res) => {
   res.render('index', {
+    user: res.user,
     showTheCity: [],
   });
 });
 
-router.get('/city', showFavorites, getCity, (req, res) => {
+router.get('/city', authenticate, showFavorites, getCity, (req, res) => {
   res.render('city', {
+    user: res.user,
     showTheCity: res.city || [],
     showTheFavorites: res.saved || [],
   });

@@ -64,7 +64,7 @@ function saveFavorites(req, res, next) {
   }
 
   // Adding userId to insertObj
-  insertObj.favorite.userId = req.session.userId;
+  insertObj.favorites.userId = req.session.userId;
 
   getDB().then((db) => {
     db.collection('favorites')
