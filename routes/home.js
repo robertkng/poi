@@ -1,7 +1,9 @@
-const router        = require('express').Router();
-const { getCity }   = require('../services/poilocator');
-const { saveFavorites, showFavorites, deleteFavorites }   = require('../models/favorites');
-const methodOverride = require('method-override');
+const router                 = require('express').Router();
+const { getCity }            = require('../services/poilocator');
+const { saveFavorites,
+        showFavorites,
+        deleteFavorites }    = require('../models/favorites');
+const methodOverride         = require('method-override');
 
 router.use(methodOverride('_method'));
 
