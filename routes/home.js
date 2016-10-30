@@ -7,7 +7,7 @@ router.use(methodOverride('_method'));
 
 router.get('/', (req,res) => {
   res.render('index', {
-  showTheCity: [],
+    showTheCity: [],
   });
 });
 
@@ -27,7 +27,7 @@ router.get('/city', showFavorites, getCity, (req, res) => {
 //middleware exists between favorites and req,res
 router.post('/city', saveFavorites,  (req, res) => {
   res.render('city', {
-  showTheCity: res.city || [],
+    showTheCity: res.city || [],
   });
   res.redirect('/city');
 });
