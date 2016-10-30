@@ -87,11 +87,11 @@ function saveFavorites(req,res,next) {
   }
   // Adding userId to insertObj
   // insertObj.favorite.userId = {};
-  insertObj.favorite.userId = req.session.userId;
+  insertObj.favorites.userId = req.session.userId;
     getDB().then((db) => {
     console.log(req.body.favorite);
     db.collection('favorites')
-      .insert(insertObj.favorite, (insertErr, result) => {
+      .insert(insertObj.favorites, (insertErr, result) => {
         if (insertErr) return next(insertErr);
         res.saved = result;
         db.close();
