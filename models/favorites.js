@@ -54,7 +54,30 @@ function showFavorites(req, res, next) {
 //   return false;
 // }
 
-function saveFavorites(req, res, next) {
+// function saveFavorites(req, res, next) {
+//   // creating an empty object for the insertObj
+//   const insertObj = {};
+
+//   // copying all of req.body into insertObj
+//   for(key in req.body) {
+//     insertObj[key] = req.body[key];
+//   }
+//   // Adding userId to insertObj
+//   insertObj.favorite.userId = req.session.userId;
+//   getDB().then((db) => {
+//     db.collection('favorites')
+//       .insert(insertObj.favorite, (insertErr, result) => {
+//         if (insertErr) return next(insertErr);
+//         res.saved = result;
+//         db.close();
+//         return next();
+//       });
+//       return false;
+//   });
+//   return false;
+// };
+
+function saveFavorites(req,res,next) {
   // creating an empty object for the insertObj
   const insertObj = {};
 
@@ -62,24 +85,22 @@ function saveFavorites(req, res, next) {
   for(key in req.body) {
     insertObj[key] = req.body[key];
   }
-
   // Adding userId to insertObj
-  insertObj.favorites.userId = req.session.userId;
-
-  getDB().then((db) => {
+  // insertObj.favorite.userId = {};
+  insertObj.favorite.userId = req.session.userId;
+    getDB().then((db) => {
+    console.log(req.body.favorite);
     db.collection('favorites')
       .insert(insertObj.favorite, (insertErr, result) => {
         if (insertErr) return next(insertErr);
         res.saved = result;
         db.close();
-        next();
+        return next();
       });
-      return false;
+    return false;
   });
   return false;
-}
-
-
+};
 
 function deleteFavorites(req,res,next) {
   getDB().then((db) => {

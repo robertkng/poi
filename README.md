@@ -5,7 +5,7 @@ Description:
 A web application that allows one to look up points of interest within the searched city. 
 
 
-User Story
+User Story:
 Any guests can search any large city and view the images and details of each points of 
 interest in that city. But, only signed in users can save down the images and details
 onto their logged in account.
@@ -35,7 +35,7 @@ Approach Taken
 I decided to create the MVC model first to organize how I would connect everything.
 
 
-Unsolved problem(s)
+Unsolved problems
 1) Points of interest for some of the cities either did not populate or was undefined,
 this causes an error when conducting searches. I never got around to creating a if statement
 to resolve the issue.
