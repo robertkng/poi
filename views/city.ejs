@@ -9,38 +9,31 @@
 <body>
   <a><%= user.username %>'s Account</a>
   <h1>Points of Interest Locator - City Search</h1>
-    <h2>Find something to see in any city around the world</h2>
+    <h2>Find something to see anywhere in the world</h2>
   <form class="search" action="/city" method="Get" >
     <input type="text" name="city" placeholder="Enter City Name">
     <input type="submit" value="SEARCH">
   </form>
   <div class="wrapper">
-    <div class="container">
+    <div class="container" id="results">
       <a href="/">Search Again</a>
-        <p>Results:</p>
-        <ul class="results">
-          <li class="poi">
-            <% showTheCity.forEach(function(info){ %>
-            <img class="image" src="<%= info.contextual_images[0].medium.url %><" alt="">
-            <p>Place: <%= info.title %> </p>
-            <p>Description: <%= info.details.short_description %> </p>
-            <p>Location: <%= info.location.google_maps_link %> </p>
-
-            <form class="save-favorites" action="/city" method="post">
-              <input type="hidden" name="favorites[title]" value="<%= info.title %>"><br>
-              <input type="hidden" name="favorites[contextual_images[0].medium.url]" value="<%= info.contextual_images[0].medium.url %>"><br>
-              <input type="hidden" name="favorites[details].short_description" value="<%= info.details.short_description %>"><br>
-              <input type="hidden" name="favorites[location].google_maps_link" value="<%= info.location.google_maps_link %>"><br>
-              <input type="submit" value="Save">
-            </form>
-          </li>
+        <h3>Results:</h3>
+        <% showTheCity.forEach(function(info){ %>
+        <p><img class="image" src="<%= info.contextual_images[0].medium.url %><" alt=""></p>
+        <p>Place: <%= info.title %> </p>
+        <p>Description: <%= info.details.short_description %> </p>
+        <p>Location: <%= info.location.google_maps_link %> </p>
+        <form class="save-favorites" action="/city" method="post">
+          <input type="hidden" name="favorites[title]" value="<%= info.title %>"><br>
+          <input type="hidden" name="favorites[contextual_images[0].medium.url]" value="<%= info.contextual_images[0].medium.url %>"><br>
+          <input type="hidden" name="favorites[details].short_description" value="<%= info.details.short_description %>"><br>
+          <input type="hidden" name="favorites[location].google_maps_link" value="<%= info.location.google_maps_link %>"><br>
+          <input type="submit" value="Save">
+        </form>
         <% }) %>
-      </ul>
     </div>
-    <div class="container">
-      <h3>You have <%= showTheFavorites.length %> Favorites</h3>
-      <ul class="favorites">
-        <li class="poi">
+    <div class="container" id="favorites">
+      <h3>You have <%= showTheFavorites.length %> Favorite(s)</h3>
         <%# Saved items are displayed below %>
         <% showTheFavorites.forEach(function(info) { %>
         <p><%= info.title %> </p>
@@ -49,9 +42,7 @@
           <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
             <input type="submit" value="Delete">
           </form>
-        </li>
         <% }) %>
-      </ul>
     </div>
   </div>
 </body>

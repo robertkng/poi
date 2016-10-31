@@ -32,7 +32,10 @@ To save the points of interest, you must have create a username and password.
 
 
 Approach Taken
-I decided to create the MVC model first to organize how I would connect everything.
+I decided to create the MVC model first to organize how I would connect everything. Once 
+everything was connected, I added to user authentication. Once that was set up, I finished
+off with the styling. I made sure I hit the requirements before I attempted to patch 
+up any user experience issues.
 
 
 Unsolved problems
