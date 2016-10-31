@@ -7,6 +7,7 @@ const bcrypt       = require('bcryptjs');
 
 const SALTROUNDS = 10;
 
+// function to create user
 function createUser(req, res, next) {
   const userObject = {
     username: req.body.user.username,
@@ -28,6 +29,7 @@ function createUser(req, res, next) {
   });
 }
 
+// function to retrieve user info by id
 function getUserById(id) {
   return getDB().then((db) => {
     const promise = new Promise((resolve, reject) => {
@@ -42,6 +44,7 @@ function getUserById(id) {
   });
 }
 
+// function to retrieve user info by username
 function getUserByUsername(username) {
   return getDB().then((db) => {
     const promise = new Promise((resolve, reject) => {

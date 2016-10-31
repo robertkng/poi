@@ -1,7 +1,9 @@
+// set up dependencies and API variables
 const fetch = require('node-fetch');
 const API_URL = "https://api.sandbox.amadeus.com/v1.2/points-of-interest/yapq-search-text?";
 const API_KEY = process.env.AMADEUS_KEY;
 
+// set up function to query within the API
 function getCity(req,res,next) {
   fetch(`${API_URL}apikey=${API_KEY}&city_name=${req.query.city }`)
 //parses the json string on the server
