@@ -54,7 +54,8 @@ app.use('/auth', authRouter);
 app.use('/users', usersRouter);
 app.use('/city', cityRoute)
 
-// Listen on port for connections
+// Listen on port for connections. Look for PORT environment first, if
+// that doesn't work, use port 3000
 // process.env.PORT is needed for when we deploy to Heroku
 const port           = process.env.PORT || 3000;
 app.listen(port, () => {

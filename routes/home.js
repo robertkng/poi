@@ -1,7 +1,7 @@
 // set up dependencies
 const router                 = require('express').Router();
 const { authenticate }       = require('../lib/auth');
-const { getCity }            = require('../services/poilocator');
+const { searchCity }            = require('../services/poilocator');
 const { saveFavorites,
         showFavorites,
         deleteFavorites }    = require('../models/favorites');
@@ -20,13 +20,15 @@ router.get('/', authenticate, showFavorites, (req,res) => {
 });
 
 // middleware to call below functions when on city page and rendering to city page
-router.get('/city', authenticate, getCity, showFavorites, (req, res) => {
+router.get('/city', authenticate, searchCity, showFavorites, (req, res) => {
   res.render('city', {
     user: res.user,
     showTheCity: res.city || [],
     showTheFavorites: res.saved || [],
   });
 });
+
+
 
 // middleware to call below function when on city page and redirecting back to city page
 // after deleting specific id
