@@ -64,11 +64,50 @@ function deleteFavorites(req,res,next) {
   return false;
 }
 
+// function to edit the item
+function editCity(req, res, next) {
+  getDB().then((db) => {
+
+    db.collection('favorites')
+      .findAndModify({ _id: ObjectID(req.params.id) }, [] /* sort */,
+      { $set: req.body.city }, { new: true } /* options */, (updateError, doc) => {
+        if (updateError) return next(updateError);
+
+        // return the data
+        res.updated = doc;
+        db.close();
+        return next();
+      });
+    return false;
+  });
+  return false;
+}
+
+// function to retrieve the updated data after an edit has been made
+function getCity(req, res, next) {
+  getDB().then((db) => {
+
+    db.collection('favorites')
+      .findOne({ _id: ObjectID(req.params.id) }, (findErr, city) => {
+        if (findErr) return next(findErr);
+
+        // return the data
+        res.city = city;
+        db.close();
+        return next();
+      });
+    return false;
+  });
+  return false;
+}
+
 // below are function calls exported through the router when called upon
 module.exports = {
   showFavorites,
   saveFavorites,
   deleteFavorites,
+  editCity,
+  getCity,
 };
 
 

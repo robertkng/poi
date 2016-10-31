@@ -51,6 +51,8 @@
         <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
           <input type="submit" value="Delete" id="button">
         </form>
+        <a href="edit/<%= info._id %>">EDIT</a>
+
       </div>
     <% }) %>
   </div>

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit City</title>
+  </head>
+  <body>
+    <form class="edit" action="<%= city._id %>?_method=PUT" method="POST">
+      <input type="text" name="city[title]" value="<%= city.title %>"><br>
+      <input type="text" name="city[details].short_description" value="<%= city.details.short_description %>"><br>
+      <input type="submit" value="Update">
+    </form>
+  </body>
+</html>
