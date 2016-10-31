@@ -28,6 +28,7 @@ Wireframe:
 Installation
 Go to website, log in as guest to view the points of interest in the searched city.
 To save the points of interest, you must have create a username and password.
+Heroku link: https://dashboard.heroku.com/apps/robertng-project2/settings
 
 
 
