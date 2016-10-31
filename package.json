@@ -2,6 +2,10 @@
   "name": "poilocator",
   "version": "1.0.0",
   "description": "",
+  "engines": {
+   "node": "6.6.0",
+   "npm": "3.10.7"
+ },
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -30,5 +34,8 @@
     "eslint-plugin-import": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.4.1"
-  }
+  },
+  "engines": {
+  "node": "6.6.0"
+},
 }
