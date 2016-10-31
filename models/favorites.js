@@ -1,6 +1,6 @@
 // set up dependecies
 const { ObjectID } = require('mongodb');
-const { getDB }   = require('../lib/dbConnect.js');
+const { getDB } = require('../lib/dbConnect.js');
 
 // below function created to show saved favorites, called upon in /routes/home.js file
 function showFavorites(req, res, next) {
@@ -21,7 +21,7 @@ function showFavorites(req, res, next) {
 }
 
 // below function created to save favorites, called upon in /routes/home.js file
-function saveFavorites(req,res,next) {
+function saveFavorites(req, res, next) {
 // creating an empty object for the insertObj
   const insertObj = {};
 
@@ -32,7 +32,7 @@ function saveFavorites(req,res,next) {
 // Adding userId to insertObj
 // insertObj.favorite.userId = {};
   insertObj.favorites.userId = req.session.userId;
-    getDB().then((db) => {
+  getDB().then((db) => {
 // database references the collection name 'favorites'
     db.collection('favorites')
       .insert(insertObj.favorites, (insertErr, result) => {
@@ -47,27 +47,26 @@ function saveFavorites(req,res,next) {
 };
 
 // below function created to delete favorites, called upon in /routes/home.js file
-function deleteFavorites(req,res,next) {
+function deleteFavorites(req, res, next) {
   getDB().then((db) => {
 // database references the collection name 'favorites'
     db.collection('favorites')
-    .findAndRemove({_id: ObjectID(req.params.id)}, (removeErr, doc) => {
+    .findAndRemove({ _id: ObjectID(req.params.id) }, (removeErr, doc) => {
       if (removeErr) return next(removeErr);
 
 //return the data
       res.remove = doc;
       db.close();
       return next();
-    })
+    });
     return false;
-  })
+  });
   return false;
 }
 
 // function to edit the item
 function editCity(req, res, next) {
   getDB().then((db) => {
-
     db.collection('favorites')
       .findAndModify({ _id: ObjectID(req.params.id) }, [] /* sort */,
       { $set: req.body.city }, { new: true } /* options */, (updateError, doc) => {
@@ -86,7 +85,6 @@ function editCity(req, res, next) {
 // function to retrieve the updated data after an edit has been made
 function getCity(req, res, next) {
   getDB().then((db) => {
-
     db.collection('favorites')
       .findOne({ _id: ObjectID(req.params.id) }, (findErr, city) => {
         if (findErr) return next(findErr);
@@ -109,7 +107,3 @@ module.exports = {
   editCity,
   getCity,
 };
-
-
-
-

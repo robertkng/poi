@@ -1,19 +1,15 @@
 // set up dependencies
-const router                 = require('express').Router();
-const { authenticate }       = require('../lib/auth');
-const { searchCity }         = require('../services/poilocator');
-const { saveFavorites,
-        showFavorites,
-        deleteFavorites,
-        editCity,
-        getCity }            = require('../models/favorites');
-const methodOverride         = require('method-override');
+const router = require('express').Router();
+const { authenticate } = require('../lib/auth');
+const { searchCity } = require('../services/poilocator');
+const { saveFavorites, showFavorites, deleteFavorites, editCity, getCity } = require('../models/favorites');
+const methodOverride = require('method-override');
 
 // middleware for method override
 router.use(methodOverride('_method'));
 
 // middleware to call below functions when on index page and rendering to index page
-router.get('/', authenticate, showFavorites, (req,res) => {
+router.get('/', authenticate, showFavorites, (req, res) => {
   res.render('index', {
     user: res.user,
     showTheCity: [],
@@ -42,15 +38,11 @@ router.put('/edit/:id', editCity, (req, res) => {
 // after deleting specific id
 router.delete('/city/:id', deleteFavorites, (req, res) => {
   res.redirect('/city');
-})
+});
 
 //middleware exists between favorites and req,res
 router.post('/city', saveFavorites, (req, res) => {
   res.redirect('/city');
 });
 
-
-
 module.exports = router;
-
-

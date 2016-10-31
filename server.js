@@ -1,5 +1,5 @@
 // set up dependencies so they can be referenced upon
-const dotEnv = require('dotenv').config({silent: true});
+const dotEnv = require('dotenv').config({ silent: true });
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
@@ -52,18 +52,15 @@ app.use('/', indexRouter);
 app.use('/', homeRoute);
 app.use('/auth', authRouter);
 app.use('/users', usersRouter);
-app.use('/city', cityRoute)
+app.use('/city', cityRoute);
 
 // Listen on port for connections. Look for PORT environment first, if
 // that doesn't work, use port 3000
 // process.env.PORT is needed for when we deploy to Heroku
-const port           = process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`server is listening on ${port}`);
 });
 // setting the homepage to a specific file
 // routes need to be towards the end of the page as they should not be referenced prior to
 // to other functions being called upon as this can cause unnecessary errors
-
-
-
