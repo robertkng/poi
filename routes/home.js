@@ -40,6 +40,7 @@ router.post('/city', saveFavorites, (req, res) => {
   res.redirect('/city');
 });
 
+
 module.exports = router;
 
 
