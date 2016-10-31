@@ -8,12 +8,14 @@
 </head>
 <body>
   <a><%= user.username %>'s Account</a>
-  <input type="submit" value="Sign Out" id="signout">
+    <form action="/auth?_method=DELETE" method="post">
+      <input type="submit" value="Sign Out" id="signout">
+    </form>
   <h1>Points of Interest Locator - City Search</h1>
     <h2>Find something to see anywhere in the world</h2>
   <form class="search" action="/city" method="Get" >
     <input type="text" name="city" placeholder="Enter City Name">
-    <input type="submit" value="SEARCH">
+    <input type="submit" value="SEARCH" id="search">
   </form>
     <a href="/">Search Again</a>
   <div class="wrapper">
