@@ -30,7 +30,7 @@
               <input type="hidden" name="favorites[contextual_images[0].medium.url]" value="<%= info.contextual_images[0].medium.url %>"><br>
               <input type="hidden" name="favorites[details].short_description" value="<%= info.details.short_description %>"><br>
               <input type="hidden" name="favorites[location].google_maps_link" value="<%= info.location.google_maps_link %>"><br>
-              <input type="submit" value="Save">
+              <input type="submit" value="Save" id="button">
             </form>
           </div>
         <% }) %>
@@ -39,18 +39,17 @@
   <div class="container">
     <h3>You have <%= showTheFavorites.length %> Favorite(s)</h3>
     <div id="favorites">
-    <div id="border">
       <%# Saved items are displayed below %>
       <% showTheFavorites.forEach(function(info) { %>
-      <p><%= info.title %> </p>
-      <p><%= info.details %></p>
-      <p><%= info.location %></p>
+      <div id="border">
+        <p><%= info.title %> </p>
+        <p><%= info.details %></p>
+        <p><%= info.location %></p>
         <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
-          <input type="submit" value="Delete">
+          <input type="submit" value="Delete" id="button">
         </form>
-        </div>
-      <% }) %>
-    </div>
+      </div>
+    <% }) %>
   </div>
 </body>
 </html>
