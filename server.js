@@ -1,21 +1,21 @@
 // set up dependencies so they can be referenced upon
-const dotEnv         = require('dotenv').config({silent: true});
-const express        = require('express');
-const logger         = require('morgan');
-const path           = require('path');
+const dotEnv = require('dotenv').config({silent: true});
+const express = require('express');
+const logger = require('morgan');
+const path = require('path');
 // bodyParser, allows post request to be made and get values from the forms
-const bodyParser     = require('body-parser');
-const session        = require('express-session');
-const cookieParser   = require('cookie-parser');
+const bodyParser = require('body-parser');
+const session = require('express-session');
+const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
-const indexRouter    = require('./routes/index.js');
-const authRouter     = require('./routes/auth');
-const usersRouter    = require('./routes/users');
-const homeRoute      = require('./routes/home');
-const cityRoute      = require('./routes/home');
+const indexRouter = require('./routes/index.js');
+const authRouter = require('./routes/auth');
+const usersRouter = require('./routes/users');
+const homeRoute = require('./routes/home');
+const cityRoute = require('./routes/home');
 
-const app            = express();
-const SECRET         = 'tacos3000';
+const app = express();
+const SECRET = 'port3000';
 
 // set default templating engine
 app.set('view engine', 'ejs');
@@ -41,7 +41,7 @@ app.use(cookieParser());
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: SECRET
+  secret: SECRET,
 }));
 
 // set static assets path so css file can be referenced
