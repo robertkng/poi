@@ -38,16 +38,17 @@ header {
   height: 400px;
 }
 
-.poi {
-  width: 170px;
-  height: 300px;
-  text-align: center;
-}
-
 p {
   font-size: 20px;
 }
 
 h1, h2 {
   font-size: 50px;
+}
+
+#border {
+  border: solid 2px black;
+  box-shadow: 10px 10px 5px #888888;
+  font-family: sans-serif;
+  text-align: center;
 }

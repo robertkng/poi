@@ -14,35 +14,42 @@
     <input type="text" name="city" placeholder="Enter City Name">
     <input type="submit" value="SEARCH">
   </form>
+    <a href="/">Search Again</a>
   <div class="wrapper">
-    <div class="container" id="results">
-      <a href="/">Search Again</a>
-        <h3>Results:</h3>
+    <div class="container">
+      <h3>Results:</h3>
+      <div id="results">
         <% showTheCity.forEach(function(info){ %>
-        <p><img class="image" src="<%= info.contextual_images[0].medium.url %><" alt=""></p>
-        <p>Place: <%= info.title %> </p>
-        <p>Description: <%= info.details.short_description %> </p>
-        <p>Location: <%= info.location.google_maps_link %> </p>
-        <form class="save-favorites" action="/city" method="post">
-          <input type="hidden" name="favorites[title]" value="<%= info.title %>"><br>
-          <input type="hidden" name="favorites[contextual_images[0].medium.url]" value="<%= info.contextual_images[0].medium.url %>"><br>
-          <input type="hidden" name="favorites[details].short_description" value="<%= info.details.short_description %>"><br>
-          <input type="hidden" name="favorites[location].google_maps_link" value="<%= info.location.google_maps_link %>"><br>
-          <input type="submit" value="Save">
-        </form>
+          <div id="border">
+            <p><img class="image" src="<%= info.contextual_images[0].medium.url %><" alt=""></p>
+            <p>Place: <%= info.title %> </p>
+            <p>Description: <%= info.details.short_description %> </p>
+            <p>Location: <%= info.location.google_maps_link %> </p>
+            <form class="save-favorites" action="/city" method="post">
+              <input type="hidden" name="favorites[title]" value="<%= info.title %>"><br>
+              <input type="hidden" name="favorites[contextual_images[0].medium.url]" value="<%= info.contextual_images[0].medium.url %>"><br>
+              <input type="hidden" name="favorites[details].short_description" value="<%= info.details.short_description %>"><br>
+              <input type="hidden" name="favorites[location].google_maps_link" value="<%= info.location.google_maps_link %>"><br>
+              <input type="submit" value="Save">
+            </form>
+          </div>
         <% }) %>
+      </div>
     </div>
-    <div class="container" id="favorites">
-      <h3>You have <%= showTheFavorites.length %> Favorite(s)</h3>
-        <%# Saved items are displayed below %>
-        <% showTheFavorites.forEach(function(info) { %>
-        <p><%= info.title %> </p>
-        <p><%= info.details %></p>
-        <p><%= info.location %></p>
-          <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
-            <input type="submit" value="Delete">
-          </form>
-        <% }) %>
+  <div class="container">
+    <h3>You have <%= showTheFavorites.length %> Favorite(s)</h3>
+    <div id="favorites">
+    <div id="border">
+      <%# Saved items are displayed below %>
+      <% showTheFavorites.forEach(function(info) { %>
+      <p><%= info.title %> </p>
+      <p><%= info.details %></p>
+      <p><%= info.location %></p>
+        <form class="delete-favorites" action="/city/<%= info._id %>?_method=DELETE" method="post">
+          <input type="submit" value="Delete">
+        </form>
+        </div>
+      <% }) %>
     </div>
   </div>
 </body>
