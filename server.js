@@ -34,7 +34,6 @@ app.use(bodyParser.json());
 // middleware for method override
 app.use(methodOverride('_method'));
 
-
 // This is how we read the cookies sent over from the browser
 app.use(cookieParser());
 

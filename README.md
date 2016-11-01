@@ -41,7 +41,7 @@ up any user experience issues.
 
 Unsolved problems
 1) Points of interest for some of the cities either did not populate or was undefined,
-this causes an error when conducting searches. I never got around to creating a if statement
+this causes an error when conducting searches. I never got around to creating an if statement
 to resolve the issue.
 2) I had some issues getting the points of interest to stay on the page after I save 
 items to the favorites container or delete items from the container.
