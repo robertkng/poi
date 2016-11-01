@@ -53,7 +53,7 @@ h1, h2 {
   text-align: center;
 }
 
-#button, #search {
+#button, #search, #signup {
   height: 50px;
   width: 100px;
   border-radius: 50%;
@@ -71,5 +71,11 @@ h1, h2 {
 #log {
   height: 50px;
   width: 130px;
+  font-size: 20px;
+}
+
+#placeholder {
+  height: 30px;
+  width: 150px;
   font-size: 20px;
 }
